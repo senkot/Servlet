@@ -13,26 +13,11 @@
 <body>
     <h1>Testing JSP</h1>
     <p>
-        <%@ page import="java.util.Date, logic.TestClass" %>
-
         <%
-            TestClass testClass = new TestClass();
+            String name = request.getParameter("name");
         %>
 
-        <%=
-            testClass.getInfo()
-        %>
-
-        <%=
-            new Date()
-        %>
-
-        <%
-            for(int i = 0; i < 10; i++){
-                out.println("<p style='color: darkred; background-color: aquamarine; text-align: center; width: 75px;'>"
-                        + "Hello : " + (i + 1) + "</p>");
-            }
-        %>
+        <%= "Hello, " + name + "!" %>
     </p>
 </body>
 </html>
