@@ -10,6 +10,9 @@ public class Servlet extends javax.servlet.http.HttpServlet {
         PrintWriter printWriter = response.getWriter();
 
         printWriter.println("<html>");
+        printWriter.println("<title>");
+        printWriter.println("Servlet!");
+        printWriter.println("</title>");
         printWriter.println("<h1> Hello, World! </h1>");
         printWriter.println("<p style='background-color: lightblue; text-align: center; color: green;'> this is Tomcat-response </p>");
         printWriter.println("</html>");
