@@ -23,6 +23,7 @@
             </div>
                 <%
                     List<String> names = (List<String>)request.getAttribute("userNames");
+//                    List<Integer> ids = (List<Integer>)request.getAttribute("ids");
 
                     if (names != null && !names.isEmpty()) {
                         out.println("<ul>");
@@ -31,6 +32,12 @@
                         }
                         out.println("</ul>");
                     } else out.println("<p>The list of users is empty!</p>");
+
+//                    if (ids != null) {
+//                        for (int i : ids) {
+//                            out.println("<p>" + i + "</p>");
+//                        }
+//                    } else out.println("<p>Ids is null!</p>");
                 %>
         </div>
     </div>

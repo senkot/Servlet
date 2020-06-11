@@ -1,15 +1,33 @@
 package app.entities;
 
 public class User {
-    private String name;
-    private String password;
+    protected int id;
+    protected String name;
+    protected String email;
+    protected String country;
 
     public User() {
     }
 
-    public User(String name, String password) {
+    public User(String name, String email, String country) {
         this.name = name;
-        this.password = password;
+        this.email = email;
+        this.country = country;
+    }
+
+    public User(int id, String name, String email, String country) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.country = country;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -20,38 +38,46 @@ public class User {
         this.name = name;
     }
 
-    public String getPassword() {
-        return password;
+    public String getEmail() {
+        return email;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    @Override
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+        @Override
     public String toString() {
         return "User{" +
                 "name'" + name + '\'' +
-                ", password='" + password + '\'' +
+                ", password='" + email + '\'' +
                 "}";
     }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-
-        User user = (User) obj;
-
-        if (name != null ? !name.equals(user.name) : user.name != null) return false;
-        return password != null ? password.equals(user.password) : user.password == null;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = name != null ? name.hashCode() : 0;
-        result = 31 * result + (password != null ? password.hashCode() : 0);
-        return result;
-    }
+//
+//    @Override
+//    public boolean equals(Object obj) {
+//        if (this == obj) return true;
+//        if (obj == null || getClass() != obj.getClass()) return false;
+//
+//        User user = (User) obj;
+//
+//        if (name != null ? !name.equals(user.name) : user.name != null) return false;
+//        return password != null ? password.equals(user.password) : user.password == null;
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        int result = name != null ? name.hashCode() : 0;
+//        result = 31 * result + (password != null ? password.hashCode() : 0);
+//        return result;
+//    }
 
 }

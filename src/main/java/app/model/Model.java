@@ -26,4 +26,8 @@ public class Model {
     public List<String> list() {
         return model.stream().map(User::getName).collect(Collectors.toList());
     }
+
+    public List<Integer> idList() {
+        return model.stream().map(User::getId).collect(Collectors.toList());
+    }
 }
