@@ -1,7 +1,6 @@
 package app.servlets;
 
 import app.entities.User;
-import app.model.Model;
 import app.model.UserDAO;
 
 import javax.servlet.RequestDispatcher;
@@ -30,12 +29,22 @@ public class ListServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        req.setAttribute("users", users);
+        String action = req.getServletPath();
+        try {
+            switch (action) {
+                case "/edit":
 
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/list.jsp");
-        requestDispatcher.forward(req, resp);
+                    break;
+                default:
+                    req.setAttribute("users", users);
+                    RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/list.jsp");
+                    requestDispatcher.forward(req, resp);
+                    break;
+            }
+        } catch (SQLException e) {
+            throw new ServletException(e);
+        }
     }
-
 
 
 }

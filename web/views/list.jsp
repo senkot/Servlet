@@ -7,6 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <style>
@@ -24,38 +25,34 @@
 
     <div>
         <div>
-            <div>
-            <h2>Users</h2>
-            </div>
-                <%
-                    List<User> users = (List<User>)request.getAttribute("users");
-                    List<String> names = (List<String>)request.getAttribute("userNames");
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Country</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
 
-                    if (users != null && !users.isEmpty()) {
-                        out.println("<table>");
-                        out.println("<tr>");
-                        out.println("<th>ID</th>");
-                        out.println("<th>Name</th>");
-                        out.println("<th>Email</th>");
-                        out.println("<th>Country</th>");
-                        out.println("</tr>");
+                <c:forEach var="user" items="${users}">
 
-                        for (User user : users) {
-                            out.println("<tr>");
-                            out.println("<td>" + user.getId() + "</td>");
-                            out.println("<td>" + user.getName() + "</td>");
-                            out.println("<td>" + user.getEmail() + "</td>");
-                            out.println("<td>" + user.getCountry() + "</td>");
-                            out.println("</tr>");
-                        }
+                <tr>
+                    <td><c:out value="${user.id}" /></td>
+                    <td><c:out value="${user.name}" /></td>
+                    <td><c:out value="${user.email}" /></td>
+                    <td><c:out value="${user.country}" /></td>
+                    <td>
+                        <a href="edit?id=<c:out value='${user.id}' />">EDIT</a>
+                    </td>
+                    <td>
+                        <a href="delete?id=<c:out value='${user.id}' />">DEL</a>
+                    </td>
+                </tr>
 
-                        out.println("</table>");
-                    } else {
-                        out.println("<ul>");
-                        out.println("<li> The List of users is empty! </li>");
-                        out.println("</ul>");
-                    }
-                %>
+                </c:forEach>
+
+            </table>
         </div>
     </div>
 

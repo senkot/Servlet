@@ -21,11 +21,11 @@
         <url-pattern>/list</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>LibraryServlet</servlet-name>
-        <servlet-class>app.servlets.LibraryServlet</servlet-class>
+        <servlet-name>DeleteServlet</servlet-name>
+        <servlet-class>app.servlets.DeleteServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>LibraryServlet</servlet-name>
-        <url-pattern>/library</url-pattern>
+        <servlet-name>DeleteServlet</servlet-name>
+        <url-pattern>/delete</url-pattern>
     </servlet-mapping>
 </web-app>

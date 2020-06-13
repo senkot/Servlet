@@ -1,7 +1,6 @@
 package app.servlets;
 
 import app.entities.User;
-import app.model.Model;
 import app.model.UserDAO;
 
 import javax.servlet.*;
@@ -32,12 +31,9 @@ public class AddServlet extends HttpServlet {
         init();
         userDAO.insertUser(user);
 
-        Model model = Model.getInstance();
-        model.addUser(user);
-
-
-        req.setAttribute("userName", name);
-        doGet(req, resp);
+        resp.sendRedirect("list");
+//        req.setAttribute("userName", name);
+//        doGet(req, resp);
     }
 
 }
