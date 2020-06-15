@@ -14,23 +14,17 @@ import java.util.List;
 
 public class ListServlet extends HttpServlet {
 
-    private UserDAO userDAO;
-
-    public void init() {
-        userDAO = new UserDAO();
-    }
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<User> users = null;
         try {
-            users = userDAO.selectAllUser();
+            users = UserDAO.getInstance().selectAllUser();
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
         String action = req.getServletPath();
-        try {
+
             switch (action) {
                 case "/edit":
 
@@ -41,9 +35,7 @@ public class ListServlet extends HttpServlet {
                     requestDispatcher.forward(req, resp);
                     break;
             }
-        } catch (SQLException e) {
-            throw new ServletException(e);
-        }
+
     }
 
 

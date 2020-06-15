@@ -9,12 +9,6 @@ import java.io.IOException;
 
 public class AddServlet extends HttpServlet {
 
-    private UserDAO userDAO;
-
-    public void init() {
-        userDAO = new UserDAO();
-    }
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/add.jsp");
@@ -28,12 +22,9 @@ public class AddServlet extends HttpServlet {
         String country = req.getParameter("country");
         User user = new User(name, email, country);
 
-        init();
-        userDAO.insertUser(user);
+        UserDAO.getInstance().insertUser(user);
 
         resp.sendRedirect("list");
-//        req.setAttribute("userName", name);
-//        doGet(req, resp);
     }
 
 }

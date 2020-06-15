@@ -10,17 +10,11 @@ import java.sql.SQLException;
 
 public class DeleteServlet extends HttpServlet {
 
-    private UserDAO userDAO;
-
-    public void init() {
-        userDAO = new UserDAO();
-    }
-
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         int id = Integer.parseInt(req.getParameter("id"));
 
         try {
-            userDAO.deleteUser(id);
+            UserDAO.getInstance().deleteUser(id);
         } catch (SQLException e) {
             e.printStackTrace();
         }

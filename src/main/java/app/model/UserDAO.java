@@ -11,6 +11,16 @@ public class UserDAO {
     private String name = "root";
     private String password = "123456";
 
+    private static UserDAO instance;
+
+    private UserDAO() {
+    }
+
+    public static synchronized UserDAO getInstance() {
+        if (instance == null) instance = new UserDAO();
+        return instance;
+    }
+
     private static final String INSERT_USER_SQL = "INSERT INTO users" + " (name, email, country) VALUES" + " (?, ?, ?);";
     private static final String SELECT_USER_BY_ID = "SELECT id,name,email,country FROM users WHERE id = ?";
     private static final String SELECT_ALL_USERS = "SELECT * FROM users";
