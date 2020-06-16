@@ -17,26 +17,15 @@ public class ListServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<User> users = null;
+
         try {
             users = UserDAO.getInstance().selectAllUser();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-        String action = req.getServletPath();
-
-            switch (action) {
-                case "/edit":
-
-                    break;
-                default:
-                    req.setAttribute("users", users);
-                    RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/list.jsp");
-                    requestDispatcher.forward(req, resp);
-                    break;
-            }
-
+        req.setAttribute("users", users);
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/list.jsp");
+        requestDispatcher.forward(req, resp);
     }
-
 
 }

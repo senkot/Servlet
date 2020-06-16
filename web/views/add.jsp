@@ -14,33 +14,14 @@
 </head>
 <body>
     <div>
-        <h1>
-            <c:if test="${user != null}">
-            Edit User
-            </c:if>
-            <c:if test="${user == null}">
-            Adding New User
-            </c:if>
-                </h1>
+        <h1>Adding New User</h1>
     </div>
     <div>
-        <%
-            if (request.getAttribute("userName") != null) {
-                out.println("<p>User '" + request.getAttribute("userName") + "' added!</p>");
-            }
-        %>
         <div>
-            <div>
-                <h2>Add user:</h2>
-            </div>
-            <c:if test="${user != null}">
-                <form action="update" method="post">
-
-                    </c:if>
-                        <c:if test="${user == null}">
-                        <form action="insert" method="post">
-
-                            </c:if>
+            <form method="post">
+                <div>
+                    <h2>Add user:</h2>
+                </div>
                 <label>Name:
                     <input type="text" name="name" value=""><br />
                 </label>
