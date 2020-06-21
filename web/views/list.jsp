@@ -43,10 +43,10 @@
                     <td><c:out value="${user.email}" /></td>
                     <td><c:out value="${user.country}" /></td>
                     <td>
-                        <a href="edit?id=<c:out value='${user.id}' />">EDIT</a>
+                        <a href='<c:url value="/edit?id=${user.id}" />'>EDIT</a>
                     </td>
                     <td>
-                        <a href="delete?id=<c:out value='${user.id}' />">DEL</a>
+                        <a href='<c:url value="/delete?id=${user.id}" />'>DEL</a>
                     </td>
                 </tr>
 
@@ -57,7 +57,7 @@
     </div>
 
     <div>
-        <button style="margin: 3px" onclick="location.href='/'">Back to main</button>
+        <button style="margin: 3px" onclick="location.href='<c:url value="/"/>'">Back to main</button>
     </div>
 </body>
 </html>
